@@ -1,10 +1,11 @@
 # racoon-cookbook
 
-TODO: Enter the cookbook description here.
+Chef cookbook for racoon (ipsec vpn).
 
 ## Supported Platforms
 
-TODO: List your supported platforms.
+debian
+ubuntu
 
 ## Attributes
 
@@ -39,4 +40,4 @@ Include `racoon` in your node's `run_list`:
 
 ## License and Authors
 
-Author:: Twiket Ltd (<anoton.nyurkin@onetwotrip.com>)
+Author:: Tony Nyurkin (<ptqa.mail@gmail.com>)
