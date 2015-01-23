@@ -6,3 +6,4 @@ description      'Installs/Configures racoon'
 long_description 'Installs/Configures racoon'
 version          '0.1.0'
 
+depends "runit"

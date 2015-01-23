@@ -1,11 +1,8 @@
 # Cookbook Name:: racoon
 # Recipe:: default
 
-apt_package "racoon"
+include_recipe 'runit'
 
-directory "/etc/racoon/racoon.d/" do
-  owner 'root'
-  group 'root'
-  mode '0644'
+racoon '' do
   action :create
 end
