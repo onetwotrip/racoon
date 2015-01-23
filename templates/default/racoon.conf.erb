@@ -1,0 +1,8 @@
+path pre_shared_key "<%= node['racoon']['pre_shared_key']%>";
+path certificate "<%= node['racoon']['certificate']%>";
+
+listen {
+  isakmp <%= node['racoon']['listen_addr']%> [<%= node['racoon']['listen_port']%>];
+}
+
+include "/etc/racoon/racoon.d/*.conf";
