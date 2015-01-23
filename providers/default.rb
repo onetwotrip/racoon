@@ -5,15 +5,16 @@ end
 use_inline_resources
 
 action :create do
+  # install racoon with apt and create dir
   apt_package 'racoon'
-  
   directory '/etc/racoon/racoon.d/' do
     owner 'root'
     group 'root'
     mode '0644'
     action :create
   end
-  
+ 
+  # Base template 
   template '/etc/racoon/racoon.conf' do
     source 'racoon.conf.erb'
     variables(
@@ -24,12 +25,20 @@ action :create do
     )
   end
 
+  # Use runit by default  
   runit_service 'racoon' do
     default_logger true
     action :create
-  end
+  end if new_resource.init_style == 'runit'
+
+ 
 end
 
 action :delete do
-
+  apt_package 'racoon' do
+    action :remove
+  end
+  runit_service 'racoon' do
+    action :disable
+  end if new_resource.init_style == 'runit'
 end
