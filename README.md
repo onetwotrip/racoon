@@ -18,7 +18,7 @@ ubuntu
     <th>Default</th>
   </tr>
   <tr>
-    <td><tt>['racoon']['pre_shared_key']</tt></td>
+    <td><tt>['racoon']['pre_shared_key_path']</tt></td>
     <td>String</td>
     <td>path to pre_shared_key</td>
     <td><tt>/etc/racoon/psk.txt</tt></td>
