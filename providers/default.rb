@@ -18,7 +18,7 @@ action :create do
   template '/etc/racoon/racoon.conf' do
     source 'racoon.conf.erb'
     variables(
-      :listen_addr    => node['racoon']['listen_addr'],
+      :listen_addr    => ipaddress,
       :listen_port    => node['racoon']['listen_port'],
       :certificate    => node['racoon']['certificate'],
       :pre_shared_key => node['racoon']['pre_shared_key']
@@ -30,17 +30,22 @@ action :create do
     source new_resource.source
     variables(
     :ipaddress => new_resource.ipaddress,
-    :my_identifier => new_resource.my_identifier,
-    :shared_secret => new_resource.shared_secret,
-    :xauth_login => new_resource.xauth_login,
     :encryption_algorithms => new_resource.encryption_algorithms
+    )
+  end
+
+  template node['racoon']['pre_shared_key_path'] do
+    source 'psk.txt.erb'
+    variables(
+    :ipaddress => new_resource.ipaddress,
+    :pre_shared_key => new_resource.pre_shared_key
     )
   end
 
   # Use runit by default  
   runit_service 'racoon' do
     default_logger true
-    action :create
+    action :enable
   end if node['racoon']['init_style'] == 'runit'
 
  
@@ -53,4 +58,8 @@ action :delete do
   runit_service 'racoon' do
     action :disable
   end if node['racoon']['init_style'] == 'runit'
+end
+
+def ipaddress()
+  node['racoon']['listen_addr'] ? node['racoon']['listen_addr'] : node['ipaddress']
 end
