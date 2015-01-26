@@ -25,6 +25,7 @@ action :create do
     )
   end
 
+  # Main template
   template "/etc/racoon/racoon.d/#{new_resource.ipaddress}.conf" do
     source new_resource.source
     variables(
