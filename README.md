@@ -1,12 +1,12 @@
 # racoon-cookbook
 
-Chef cookbook for racoon (ipsec vpn).
+Chef cookbook for racoon (ipsec vpn). 
 
 ## Supported Platforms
 
-###debian
+debian
 
-###ubuntu
+ubuntu
 
 ## Usage
 
@@ -23,3 +23,5 @@ end
 ## License and Authors
 
 Author:: Tony Nyurkin (<ptqa.mail@gmail.com>)
+
+Some code is based on https://github.com/chef-osx/racoon-ipsec-osx by Joshua Timberman joshua@opscode.com.

@@ -1,9 +1,12 @@
 actions :create, :delete
 default_action :create
 
-attribute :pre_shared_key, :kind_of => String, :default => '/etc/racoon/psk.txt'
-attribute :certificate, :kind_of => String, :default => '/etc/racoon/certs'
-attribute :listen_addr, :kind_of => String, :default => '0.0.0.0'
-attribute :listen_port, :kind_of => Fixnum, :default => 500
-attribute :lifetime, :kind_of => String, :default => '1 hour'
-attribute :init_style, :kind_of => String, :default => 'runit'
+attribute :ipaddress, :name_attribute => true
+attribute :source, :default => 'racoon-remote.conf.erb'
+attribute :my_identifier, :kind_of => String, :required => true
+attribute :shared_secret, :kind_of => String, :required => true
+attribute :xauth_login, :kind_of => String, :required => true
+attribute :encryption_algorithms, :kind_of => Hash, :default => {
+"sha1" => ["aes 256", "aes", "3des", "des"],
+"md5" => ["aes 256", "aes", "des"]
+}
