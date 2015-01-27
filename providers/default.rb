@@ -38,6 +38,7 @@ action :create do
 
   template node['racoon']['pre_shared_key_path'] do
     source 'psk.txt.erb'
+    cookbook 'racoon'
     variables(
     :ipaddress => new_resource.ipaddress,
     :pre_shared_key => new_resource.pre_shared_key
