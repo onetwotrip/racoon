@@ -48,6 +48,7 @@ action :create do
   # Use runit by default  
   runit_service 'racoon' do
     default_logger true
+    cookbook 'racoon'
     action :enable
   end if node['racoon']['init_style'] == 'runit'
 
