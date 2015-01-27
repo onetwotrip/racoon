@@ -17,6 +17,7 @@ action :create do
   # Base template 
   template '/etc/racoon/racoon.conf' do
     source 'racoon.conf.erb'
+    cookbook 'racoon'
     variables(
       :listen_addr    => ipaddress,
       :listen_port    => node['racoon']['listen_port'],
