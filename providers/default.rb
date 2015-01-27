@@ -29,6 +29,7 @@ action :create do
   # Main template
   template "/etc/racoon/racoon.d/#{new_resource.ipaddress}.conf" do
     source new_resource.source
+    cookbook new_resource.cookbook
     variables(
     :ipaddress => new_resource.ipaddress,
     :encryption_algorithms => new_resource.encryption_algorithms
