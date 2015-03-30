@@ -22,7 +22,7 @@ action :create do
       :listen_addr    => ipaddress,
       :listen_port    => node['racoon']['listen_port'],
       :certificate    => node['racoon']['certificate'],
-      :pre_shared_key => node['racoon']['pre_shared_key']
+      :pre_shared_key => node['racoon']['pre_shared_key_path']
     )
   end
 
