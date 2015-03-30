@@ -1,0 +1,3 @@
+<% Dir.foreach(node['racoon']['pre_shared_dir'] do |file| %>
+<%= IO.read(file) if file =~ /.txt/ %>
+<%end%>

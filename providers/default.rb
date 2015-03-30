@@ -36,13 +36,20 @@ action :create do
     )
   end
 
-  template node['racoon']['pre_shared_key_path'] do
+  directory node['racoon']['pre_shared_dir']
+
+  template "#{node['racoon']['pre_shared_dir']}/#{new_resource.ipaddress}.txt" do
     source 'psk.txt.erb'
     cookbook 'racoon'
     variables(
     :ipaddress => new_resource.ipaddress,
     :pre_shared_key => new_resource.pre_shared_key
     )
+  end
+
+  template node['racoon']['pre_shared_key_path'] do
+    source 'psk_all.txt.erb'
+    cookbook 'racoon'
   end
 
   # Use runit by default  
