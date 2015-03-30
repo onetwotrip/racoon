@@ -1,5 +1,5 @@
 <% Dir.foreach(node['racoon']['pre_shared_dir']) do |file| -%>
 <% if file =~ /.txt/ -%>
-<%= IO.read("#{node['racoon']['pre_shared_dir']}/#{file}")  %>
+<%= IO.read("#{node['racoon']['pre_shared_dir']}/#{file}").chop!  %>
 <% end -%>
 <% end -%>
