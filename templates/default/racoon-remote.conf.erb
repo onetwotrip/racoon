@@ -1,6 +1,6 @@
 remote <%= @ipaddress %> {
    exchange_mode main;
-   my_identifier address;
+   my_identifier address <%=node['ipaddress']%>;
 <% @encryption_algorithms.each_key do |hash| -%>
 <%   @encryption_algorithms[hash].each do |crypto| -%>
    proposal {
